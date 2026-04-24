@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sadeq - GitHub Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gh-bg: #0d1117;
+            --gh-border: #30363d;
+            --gh-text: #c9d1d9;
+            --gh-muted: #8b949e;
+            --gh-link: #58a6ff;
+            --gh-green: #238636;
+            --gh-card-bg: #161b22;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Tajawal", Helvetica, Arial, sans-serif;
+            background-color: var(--gh-bg);
+            color: var(--gh-text);
+            margin: 0;
+            padding: 30px 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        /* العمود الجانبي (الملف الشخصي) */
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+        }
+
+        .avatar {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 1px solid var(--gh-border);
+            background-color: var(--gh-card-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            margin-bottom: 15px;
+        }
+
+        .vcard-names {
+            margin-bottom: 15px;
+        }
+
+        .vcard-fullname {
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.25;
+            color: var(--gh-text);
+        }
+
+        .vcard-username {
+            font-size: 20px;
+            font-weight: 300;
+            color: var(--gh-muted);
+        }
+
+        .bio {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: var(--gh-text);
+        }
+
+        .btn-follow {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background-color: #21262d;
+            border: 1px solid rgba(240, 246, 252, 0.1);
+            color: var(--gh-text);
+            padding: 5px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        /* المحتوى الرئيسي */
+        .main-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            color: var(--gh-text);
+        }
+
+        /* قسم README (الجدول الزمني) */
+        .readme-box {
+            border: 1px solid var(--gh-border);
+            border-radius: 6px;
+            margin-bottom: 30px;
+            background-color: var(--gh-bg);
+        }
+
+        .readme-header {
+            padding: 10px 16px;
+            background-color: var(--gh-card-bg);
+            border-bottom: 1px solid var(--gh-border);
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gh-text);
+        }
+
+        .readme-content {
+            padding: 30px;
+        }
+
+        .readme-content h2 {
+            margin-top: 0;
+            border-bottom: 1px solid var(--gh-border);
+            padding-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .timeline-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--gh-border);
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+        }
+
+        .commit-time {
+            color: var(--gh-link);
+            font-family: monospace;
+            font-size: 14px;
+            width: 120px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .commit-msg {
+            color: var(--gh-text);
+            font-size: 15px;
+        }
+
+        /* قسم الأهداف (Pinned Repos) */
+        .pinned-repos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .repo-card {
+            border: 1px solid var(--gh-border);
+            border-radius: 6px;
+            padding: 16px;
+            background-color: var(--gh-bg);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .repo-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gh-link);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .repo-desc {
+            font-size: 12px;
+            color: var(--gh-muted);
+            flex: 1;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .repo-lang {
+            font-size: 12px;
+            color: var(--gh-muted);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .lang-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--gh-green);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="avatar">👨‍💻</div>
+            <div class="vcard-names">
+                <div class="vcard-fullname">صادق</div>
+                <div class="vcard-username">sadeq-daily</div>
+            </div>
+            <div class="bio">
+                طالب مجتهد 📚 | التركيز المستمر وبناء العادات اليومية للوصول إلى الأهداف.
+            </div>
+            <button class="btn-follow">Follow Schedule</button>
+        </aside>
+
+        <main class="main-content">
+            
+            <div class="readme-box">
+                <div class="readme-header">
+                    sadeq-daily / README.md
+                </div>
+                <div class="readme-content">
+                    <h2>🗓️ Daily Timeline (Commits)</h2>
+                    <ul class="timeline-list">
+                        <li class="timeline-item">
+                            <div class="commit-time">05:00 - 05:30</div>
+                            <div class="commit-msg">🕌 الاستيقاظ وأداء الصلاة</div>
+                        </li>
+                        <li class="timeline-item">
+                            <div class="commit-time">05:30 - 08:30</div>
+                            <div class="commit-msg">📚 جلسة الدراسة الأولى (3 ساعات)</div>
+                        </li>
+                        <li class="timeline-item">
+                            <div class="commit-time">08:30 - 10:00</div>
+                            <div class="commit-msg">🍳 وقت الإفطار والراحة</div>
+                        </li>
+                        <li class="timeline-item">
+                            <div class="commit-time">10:00 - 01:00</div>
+                            <div class="commit-msg">📖 جلسة الدراسة الثانية (3 ساعات)</div>
+                        </li>
+                        <li class="timeline-item">
+                            <div class="commit-time">01:00 - 02:00</div>
+                            <div class="commit-msg">🍽️ غداء، استراحة، وقراءة القرآن</div>
+                        </li>
+                        <li class="timeline-item">
+                            <div class="commit-time">02:00 - 03:00</div>
+                            <div class="commit-msg">💤 قيلولة (ساعة نوم)</div>
+                        </li>
+                        <li class="timeline-item">
+                            <div class="commit-time">03:00 - 04:00</div>
+                            <div class="commit-msg">☕ صلاة العصر وأذكار المساء</div>
+                        </li>
+                        <li class="timeline-item">
+                            <div class="commit-time">04:00 - 07:30</div>
+                            <div class="commit-msg">📝 جلسة الدراسة الثالثة (3.5 ساعة)</div>
+                        </li>
+                        <li class="timeline-item">
+                            <div class="commit-time">07:30 - 08:30</div>
+                            <div class="commit-msg">📱 وقت للراحة + مكالمة مع صفصف</div>
+                        </li>
+                        <li class="timeline-item">
+                            <div class="commit-time">08:30 - 10:00</div>
+                            <div class="commit-msg">📚 جلسة الدراسة الرابعة (1.5 ساعة)</div>
+                        </li>
+                        <li class="timeline-item">
+                            <div class="commit-time">10:30</div>
+                            <div class="commit-msg">🛏️ النوم للاستعداد لليوم التالي</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section-title">Pinned Goals</div>
+            <div class="pinned-repos">
+                
+                <div class="repo-card">
+                    <div class="repo-title">📿 Athkar-Routine</div>
+                    <div class="repo-desc">الالتزام بأذكار الصباح عند الاستيقاظ، وأذكار المساء بعد صلاة العصر. مع المداومة على الأدعية.</div>
+                    <div class="repo-lang"><div class="lang-color"></div> Spiritual</div>
+                </div>
+
+                <div class="repo-card">
+                    <div class="repo-title">📖 Quran-Daily</div>
+                    <div class="repo-desc">قراءة الورد اليومي (10 صفحات) بالإضافة إلى حفظ صفحتين من القرآن الكريم يومياً.</div>
+                    <div class="repo-lang"><div class="lang-color"></div> Spiritual</div>
+                </div>
+
+                <div class="repo-card">
+                    <div class="repo-title">🤝 Volunteer-Work</div>
+                    <div class="repo-desc">استغلال أوقات الفراغ في القيام بأعمال خيرية وإحداث أثر إيجابي في المجتمع.</div>
+                    <div class="repo-lang"><div class="lang-color" style="background-color: #e34c26;"></div> Social</div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>
+
+
